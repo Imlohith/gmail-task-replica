@@ -1,103 +1,143 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Gmail task replication</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    </head>
-    <body>
-            
-            <div class="container">
-                <div class="center-align">
-                    <div class="row">
-                            <div class="section">
-                                    
-                            </div>
-                            <div class="section">
-                                    
-                            </div>
-                            <div class="section">
-                                    
-                            </div>
-                        <div class="col s12">
-                                <a class=" sidenav-trigger btn-floating btn-large cyan pulse" data-target="gmail-task"><i class="material-icons">edit</i></a>
-                        </div>
-                    </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gmail task replication</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="center-align">
+            <div class="row">
+                <div class="section">
+
+                </div>
+                <div class="section">
+
+                </div>
+                <div class="section">
+
+                </div>
+                <div class="col s12">
+                    <a class=" sidenav-trigger btn-floating btn-large cyan pulse" data-target="gmail-task"><i
+                            class="material-icons">edit</i></a>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="sidenav" id="gmail-task">
-                        <ul class="top-bar">
-                            <div class="row">
-                                <div class="col s10">
-                                    <h2 class="tasks">Tasks</h2>
-                                </div>
-                                <div class="col s2">
-                                    <a class="sidenav-close" href="#!"><i class="material-icons black-text text-darken-2">close</i></a>
-                                </div>
-                                <div class="col s12">
-                                    <a href="" style="color :#5f6368;font-weight: bold;" class="dropdown-trigger" data-target='dropdown1' data-constrainWidth="false"  id="drop">My Tasks <i class="inline-icon material-icons Large">arrow_drop_down</i></a>
-                                </div>
-                                  <!-- Dropdown Structure -->
-                                    <ul id='dropdown1' class='dropdown-content'>
-                                            <li><a href="#!"><i class="material-icons right">done</i> My tasks</a></li>
-                                             <div class="divider"></div>
-                                            <li><a href="#!">Create new task</a></li>
-                                        </ul>
-                            </div>
-                        </ul>  
-                        <div class="divider"></div>
-                             <div class="row">
-                                 <div class="col s10">
-                                     <a class="btn-smal btn-flat"><i class="material-icons left blue-text text-darken-2">add</i>Add a task</a>
-                                 </div>
-                                 <div class="col s2">
-                                      <a href="#" class="dropdown-trigger" data-target='dropdown2' ><i class="material-icons right">more_vert</i></a> 
-                                 </div>
-                                  <!-- Dropdown Structure -->
-                                  <ul id='dropdown2' class='dropdown-content'>
-                                        <li><a href="#!">sort By</a></li>
-                                        <li><a href="#!">My order</a></li>
-                                        <li><a href="#!">Date</a></li>
-                                         <div class="divider"></div>
-                                        <li><a href="#!">Rename list</a></li>
-                                        <li><a href="#!">Delete list</a></li>
-                                        <li><a href="#!">Delete tasks</a></li>
-                                        <div class="divider"></div>
-                                        <li><a href="#!">Keyboard shortcuts</a></li>
-                                        <li><a href="#!">Reminder tasks</a></li>
-                                    </ul>
-                             </div>     
-                             <div class="container">  
-                                <div class="section">
-                                        <div class="col s12">
-                                            <img  src="https://www.gstatic.com/tasks/zero-state.svg" alt="">
-                                        </div>
-                                        <div class="col s12">
-                                                <h6 class="center-align">A fresh start</h3>
-                                                <p class="center-align">Anything to add?</p>
-                                        </div>
-                                 </div>
-                        </div> 
+    <div class="sidenav" id="gmail-task">
+        <ul class="top-bar">
+            <div class="row">
+                <div class="col s10">
+                    <h2 class="tasks">Tasks</h2>
+                </div>
+                <div class="col s2">
+                    <a class="sidenav-close" href="#!"><i class="material-icons black-text text-darken-2">close</i></a>
+                </div>
+                <div class="col s12">
+                    <a href="" style="color :#5f6368;font-weight: bold;" class="dropdown-trigger"
+                        data-target='dropdown1' data-constrainWidth="false" id="drop">My Tasks <i
+                            class="inline-icon material-icons Large">arrow_drop_down</i></a>
+                </div>
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!"><i class="material-icons right">done</i> My tasks</a></li>
+                    <div class="divider"></div>
+                    <li><a href="#!">Create new task</a></li>
+                </ul>
             </div>
-            <!-- Compiled and minified JavaScript -->
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-            <script>
-            $(document).ready(function(){
-                $('.sidenav').sidenav({
-                    edge: 'right',
-                });
+        </ul>
+        <div class="divider"></div>
+        <div class="row" style="margin:0px">
+            <div class="col s10">
+                <a class="btn-smal btn-flat"><i class="material-icons left blue-text text-darken-2">add</i>Add a
+                    task</a>
+            </div>
+            <div class="col s2">
+                <a href="#" class="dropdown-trigger" data-target='dropdown2'><i
+                        class="material-icons right">more_vert</i></a>
+            </div>
+        </div>
+        <!-- Tasks work -->
+        <div class="row">
+            <div class="col s12">
+                <form action="" id="add-task">
+                    <input style="border-top: 1px ;" type="text" name="title" class="validate grey lighten-5">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <ul id="tasks">
+
+                </ul>
+            </div>
+            <!-- Tasks work ended -->
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown2' class='dropdown-content'>
+                <li><a href="#!">sort By</a></li>
+                <li><a href="#!">My order</a></li>
+                <li><a href="#!">Date</a></li>
+                <div class="divider"></div>
+                <li><a href="#!">Rename list</a></li>
+                <li><a href="#!">Delete list</a></li>
+                <li><a href="#!">Delete tasks</a></li>
+                <div class="divider"></div>
+                <li><a href="#!">Keyboard shortcuts</a></li>
+                <li><a href="#!">Reminder tasks</a></li>
+            </ul>
+        </div>
+        <div class="container" id="cover-image">
+            <div class="section">
+                <div class="col s12">
+                    <img src="https://www.gstatic.com/tasks/zero-state.svg" alt="">
+                </div>
+                <div class="col s12">
+                    <h6 class="center-align">A fresh start</h3>
+                        <p class="center-align">Anything to add?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav({
+                edge: 'right',
             });
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-            });
-            </script>
-        </body>
-        </html>
+        });
+        $('.dropdown-trigger').dropdown({
+            coverTrigger: false,
+        });
+        const firebaseConfig = {
+            apiKey: "AIzaSyAYPO63_QStZgSGHvSEq4be5WuYvz0p7Rw",
+            authDomain: "my-awesome-vue-app.firebaseapp.com",
+            databaseURL: "https://my-awesome-vue-app.firebaseio.com",
+            projectId: "my-awesome-vue-app",
+            storageBucket: "my-awesome-vue-app.appspot.com",
+            messagingSenderId: "461223005917",
+            appId: "1:461223005917:web:1c80ae899573ea8c"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore()
+    </script>
+    <script src="init.js"></script>
+</body>
+
+</html>
